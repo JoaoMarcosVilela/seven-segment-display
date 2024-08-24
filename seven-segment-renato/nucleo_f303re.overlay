@@ -1,0 +1,73 @@
+
+/ {
+	model = "STMicroelectronics STM32F303RE-NUCLEO board";
+	compatible = "st,stm32f303re-nucleo";
+
+	chosen {
+		zephyr,console = &usart2;
+		zephyr,shell-uart = &usart2;
+		zephyr,sram = &sram0;
+		zephyr,flash = &flash0;
+		zephyr,canbus = &can1;
+	};
+
+	leds: leds {
+		compatible = "gpio-leds";
+	    
+        led_a: led_a {
+			gpios = <&gpioa 6 GPIO_ACTIVE_HIGH>;
+			label = "User LD2";
+		};
+
+		led_b: led_b {
+			gpios = <&gpioa 5 GPIO_ACTIVE_HIGH>;
+			label = "User LD2";
+		};
+
+        led_c: led_c {
+			gpios = <&gpioc 7 GPIO_ACTIVE_HIGH>;
+			label = "User LD2";
+		};
+
+        led_d: led_d {
+			gpios = <&gpioa 9 GPIO_ACTIVE_HIGH>;
+			label = "User LD2";
+		};
+
+        led_e: led_e {
+			gpios = <&gpiob 8 GPIO_ACTIVE_HIGH>;
+			label = "User LD2";
+		};
+
+        led_f: led_f {
+			gpios = <&gpioa 7 GPIO_ACTIVE_HIGH>;
+			label = "User LD2";
+		};
+
+        led_g: led_g {
+			gpios = <&gpiob 6 GPIO_ACTIVE_HIGH>;
+			label = "User LD2";
+		};
+	};
+
+	gpio_keys {
+		compatible = "gpio-keys";
+		user_button: button {
+			label = "User";
+			gpios = <&gpioc 13 GPIO_ACTIVE_LOW>;
+			zephyr,code = <INPUT_KEY_0>;
+		};
+	};
+
+	aliases {
+        leda = &led_a;
+		ledb = &led_b;
+        ledc = &led_c;
+        ledd = &led_d;
+        lede = &led_e;
+        ledf = &led_f;
+        ledg = &led_g;
+
+		sw0 = &user_button;
+	};
+};
